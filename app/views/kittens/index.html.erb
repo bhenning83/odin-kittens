@@ -1,26 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Kittens</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @kittens.each do |kitten| %>
-      <tr>
-        <td><%= kitten.name %></td>
-        <td><%= link_to 'Show', kitten %></td>
-        <td><%= link_to 'Edit', edit_kitten_path(kitten) %></td>
-        <td><%= link_to 'Destroy', kitten, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Kitten', new_kitten_path %>
+<% @kittens.each do |k| %>
+  <tr>
+    <strong><%= k.name %></strong>
+    <td><%= link_to 'Show', kitten_path(k.id) %> | </td>
+    <td><%= link_to 'Edit', edit_kitten_path(k.id) %> | </td>
+    <td><%= link_to 'Delete', kitten_path(k.id), method: 'delete', data: {confirm: 'Furr real?'} %></td>
+  </tr><br /><br />
+<% end %><br />
+<%= link_to 'Create a new kitten', new_kitten_path %>
